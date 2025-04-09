@@ -27,18 +27,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // Login form schema
 const loginSchema = z.object({
-  email: z.string().email({ message: "Введите корректный email адрес" }),
-  password: z.string().min(6, { message: "Пароль должен содержать не менее 6 символов" }),
+  email: z.string().email({ message: "Enter a valid email address" }),
+  password: z.string().min(6, { message: "Password must be at least 6 characters long" }),
 });
 
 // Register form schema
 const registerSchema = z.object({
-  name: z.string().min(2, { message: "Имя должно содержать не менее 2 символов" }),
-  email: z.string().email({ message: "Введите корректный email адрес" }),
-  password: z.string().min(6, { message: "Пароль должен содержать не менее 6 символов" }),
-  confirmPassword: z.string().min(6, { message: "Пароль должен содержать не менее 6 символов" }),
+  name: z.string().min(2, { message: "Name must be at least 2 characters long" }),
+  email: z.string().email({ message: "Enter a valid email address" }),
+  password: z.string().min(6, { message: "Password must be at least 6 characters long" }),
+  confirmPassword: z.string().min(6, { message: "Password must be at least 6 characters long" }),
 }).refine(data => data.password === data.confirmPassword, {
-  message: "Пароли не совпадают",
+  message: "Passwords don't match",
   path: ["confirmPassword"],
 });
 
@@ -93,23 +93,23 @@ const Login = () => {
       <div className="w-full max-w-md">
         <div className="flex items-center justify-center mb-8">
           <div className="w-12 h-12 bg-app-accent rounded-lg flex items-center justify-center text-white font-bold text-2xl">
-            ТК
+            SC
           </div>
-          <h1 className="ml-4 text-2xl font-bold">Торговый Консультант</h1>
+          <h1 className="ml-4 text-2xl font-bold">Shopping Consultant</h1>
         </div>
         
         <Card className="border-none shadow-lg animate-fade-in">
           <CardHeader>
-            <CardTitle className="text-xl text-center">Добро пожаловать</CardTitle>
+            <CardTitle className="text-xl text-center">Welcome</CardTitle>
             <CardDescription className="text-center">
-              Войдите в аккаунт или зарегистрируйтесь
+              Log in to your account or register
             </CardDescription>
           </CardHeader>
           
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid grid-cols-2 mb-4">
-              <TabsTrigger value="login">Вход</TabsTrigger>
-              <TabsTrigger value="register">Регистрация</TabsTrigger>
+              <TabsTrigger value="login">Login</TabsTrigger>
+              <TabsTrigger value="register">Register</TabsTrigger>
             </TabsList>
             
             <TabsContent value="login">
@@ -134,7 +134,7 @@ const Login = () => {
                       name="password"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Пароль</FormLabel>
+                          <FormLabel>Password</FormLabel>
                           <FormControl>
                             <Input type="password" placeholder="••••••" {...field} />
                           </FormControl>
@@ -145,7 +145,7 @@ const Login = () => {
                   </CardContent>
                   <CardFooter className="flex flex-col space-y-2">
                     <Button type="submit" className="w-full">
-                      Войти
+                      Login
                     </Button>
                     <Button
                       type="button"
@@ -153,7 +153,7 @@ const Login = () => {
                       className="w-full"
                       onClick={handleDemoLogin}
                     >
-                      Демо-режим
+                      Demo Mode
                     </Button>
                   </CardFooter>
                 </form>
@@ -169,9 +169,9 @@ const Login = () => {
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Имя</FormLabel>
+                          <FormLabel>Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Иван Иванов" {...field} />
+                            <Input placeholder="John Doe" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -195,7 +195,7 @@ const Login = () => {
                       name="password"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Пароль</FormLabel>
+                          <FormLabel>Password</FormLabel>
                           <FormControl>
                             <Input type="password" placeholder="••••••" {...field} />
                           </FormControl>
@@ -208,7 +208,7 @@ const Login = () => {
                       name="confirmPassword"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Подтвердите пароль</FormLabel>
+                          <FormLabel>Confirm Password</FormLabel>
                           <FormControl>
                             <Input type="password" placeholder="••••••" {...field} />
                           </FormControl>
@@ -219,7 +219,7 @@ const Login = () => {
                   </CardContent>
                   <CardFooter>
                     <Button type="submit" className="w-full">
-                      Зарегистрироваться
+                      Register
                     </Button>
                   </CardFooter>
                 </form>

@@ -15,11 +15,11 @@ interface ChatMessage {
   timestamp: Date;
 }
 
-const EXAMPLE_CONVERSATION = [
+const EXAMPLE_CONVERSATION: ChatMessage[] = [
   {
     id: "1",
     sender: "assistant",
-    text: "Здравствуйте! Я Ваш торговый консультант. Чем могу помочь?",
+    text: "Hello! I'm your shopping consultant. How can I help you?",
     timestamp: new Date(Date.now() - 5000),
   },
 ];
@@ -47,37 +47,37 @@ const Chat = () => {
     
     let response: ChatMessage;
     
-    if (userMessage.toLowerCase().includes("ноутбук")) {
+    if (userMessage.toLowerCase().includes("laptop")) {
       response = {
         id: Date.now().toString(),
         sender: "assistant",
-        text: "Отлично! Я помогу вам выбрать оптимальный ноутбук. Какой у вас бюджет?",
+        text: "Great! I'll help you choose the optimal laptop. What is your budget?",
         timestamp: new Date(),
       };
-    } else if (userMessage.toLowerCase().includes("бюджет") || userMessage.includes("руб")) {
+    } else if (userMessage.toLowerCase().includes("budget") || userMessage.includes("$")) {
       response = {
         id: Date.now().toString(),
         sender: "assistant",
-        text: "Спасибо! А какие задачи вы планируете решать с помощью ноутбука? Например: работа с документами, программирование, игры, дизайн, видеомонтаж и т.д.",
+        text: "Thank you! And what tasks do you plan to solve with the laptop? For example: working with documents, programming, gaming, design, video editing, etc.",
         timestamp: new Date(),
       };
     } else if (
-      userMessage.toLowerCase().includes("игр") ||
-      userMessage.toLowerCase().includes("дизайн") ||
-      userMessage.toLowerCase().includes("программирован") ||
-      userMessage.toLowerCase().includes("документ")
+      userMessage.toLowerCase().includes("gam") ||
+      userMessage.toLowerCase().includes("design") ||
+      userMessage.toLowerCase().includes("program") ||
+      userMessage.toLowerCase().includes("document")
     ) {
       response = {
         id: Date.now().toString(),
         sender: "assistant",
-        text: "Отлично, я анализирую рынок на основе ваших требований... \n\nНа основе вашего бюджета и указанных задач, я рекомендую обратить внимание на следующие модели: \n\n1. **Acer Swift 3** - отличное соотношение цена-качество, подходит для работы с документами и веб-серфинга. \n\n2. **ASUS TUF Gaming F15** - производительный ноутбук с дискретной видеокартой, идеален для игр. \n\n3. **Apple MacBook Air M2** - компактный и мощный, отлично подходит для дизайна и программирования. \n\nХотите узнать подробнее о какой-то конкретной модели?",
+        text: "Great, I'm analyzing the market based on your requirements... \n\nBased on your budget and specified tasks, I recommend considering the following models: \n\n1. **Acer Swift 3** - excellent value for money, suitable for working with documents and web surfing. \n\n2. **ASUS TUF Gaming F15** - powerful laptop with discrete graphics card, ideal for gaming. \n\n3. **Apple MacBook Air M2** - compact and powerful, perfect for design and programming. \n\nWould you like to know more about a specific model?",
         timestamp: new Date(),
       };
     } else {
       response = {
         id: Date.now().toString(),
         sender: "assistant",
-        text: "Чтобы я мог помочь вам с выбором, расскажите, пожалуйста, какой товар вы хотите приобрести?",
+        text: "To help you make a choice, could you please tell me what product you're looking to purchase?",
         timestamp: new Date(),
       };
     }
@@ -110,7 +110,7 @@ const Chat = () => {
   };
   
   const formatTime = (date: Date) => {
-    return new Intl.DateTimeFormat("ru-RU", {
+    return new Intl.DateTimeFormat("en-US", {
       hour: "2-digit",
       minute: "2-digit",
     }).format(date);
@@ -120,8 +120,8 @@ const Chat = () => {
     <AppLayout>
       <div className="flex flex-col h-full">
         <div className="p-4 bg-white border-b border-gray-200 hidden md:block">
-          <h1 className="text-xl font-semibold">Чат с консультантом</h1>
-          <p className="text-sm text-gray-500">Задайте вопрос о товаре, который хотите приобрести</p>
+          <h1 className="text-xl font-semibold">Chat with consultant</h1>
+          <p className="text-sm text-gray-500">Ask a question about the product you want to buy</p>
         </div>
         
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -136,7 +136,7 @@ const Chat = () => {
               {message.sender === "assistant" && (
                 <Avatar className="h-8 w-8">
                   <AvatarImage src="" />
-                  <AvatarFallback className="bg-app-accent text-white">ТК</AvatarFallback>
+                  <AvatarFallback className="bg-app-accent text-white">SC</AvatarFallback>
                 </Avatar>
               )}
               
@@ -172,7 +172,7 @@ const Chat = () => {
             <div className="flex items-start gap-3">
               <Avatar className="h-8 w-8">
                 <AvatarImage src="" />
-                <AvatarFallback className="bg-app-accent text-white">ТК</AvatarFallback>
+                <AvatarFallback className="bg-app-accent text-white">SC</AvatarFallback>
               </Avatar>
               <div className="rounded-lg p-3 bg-gray-100">
                 <div className="flex items-center space-x-1">
@@ -198,7 +198,7 @@ const Chat = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Напишите сообщение..."
+              placeholder="Write a message..."
               className="flex-1"
               disabled={isTyping}
             />

@@ -11,30 +11,30 @@ import { Badge } from "@/components/ui/badge";
 const storesData = [
   {
     id: "1",
-    name: "ТехноМаг",
-    address: "ул. Ленина, 45",
-    phone: "+7 (999) 123-45-67",
-    hours: "10:00 - 21:00",
+    name: "TechMag",
+    address: "45 Main St",
+    phone: "+1 (555) 123-4567",
+    hours: "10:00 AM - 9:00 PM",
     rating: 4.8,
     products: ["Acer Swift 3", "ASUS TUF Gaming F15"],
     coordinates: { lat: 55.751244, lng: 37.618423 },
   },
   {
     id: "2",
-    name: "КомпМаркет",
-    address: "пр. Мира, 112",
-    phone: "+7 (999) 765-43-21",
-    hours: "09:00 - 20:00",
+    name: "CompMarket",
+    address: "112 Peace Ave",
+    phone: "+1 (555) 765-4321",
+    hours: "09:00 AM - 8:00 PM",
     rating: 4.5,
     products: ["ASUS TUF Gaming F15", "Apple MacBook Air M2"],
     coordinates: { lat: 55.759244, lng: 37.623423 },
   },
   {
     id: "3",
-    name: "ДиджиталШоп",
-    address: "ул. Гагарина, 23",
-    phone: "+7 (999) 555-66-77",
-    hours: "10:00 - 22:00",
+    name: "DigitalShop",
+    address: "23 Broadway",
+    phone: "+1 (555) 555-6677",
+    hours: "10:00 AM - 10:00 PM",
     rating: 4.7,
     products: ["Acer Swift 3", "Apple MacBook Air M2"],
     coordinates: { lat: 55.741244, lng: 37.613423 },
@@ -51,15 +51,15 @@ const Stores = () => {
     <AppLayout>
       <div className="flex flex-col h-full">
         <div className="p-4 md:p-6 bg-white border-b border-gray-200">
-          <h1 className="text-2xl font-semibold">Карта магазинов</h1>
-          <p className="text-gray-500">Найдите ближайшие магазины с рекомендованными товарами</p>
+          <h1 className="text-2xl font-semibold">Store Map</h1>
+          <p className="text-gray-500">Find nearby stores with recommended products</p>
         </div>
         
         <div className="flex-1 flex flex-col md:flex-row">
           <div className="md:w-1/2 p-4 md:p-6 overflow-y-auto">
             <Tabs defaultValue="all" className="w-full mb-6">
               <TabsList className="mb-4">
-                <TabsTrigger value="all">Все магазины</TabsTrigger>
+                <TabsTrigger value="all">All Stores</TabsTrigger>
                 <TabsTrigger value="acer">Acer Swift 3</TabsTrigger>
                 <TabsTrigger value="asus">ASUS TUF Gaming</TabsTrigger>
                 <TabsTrigger value="apple">MacBook Air</TabsTrigger>
@@ -121,9 +121,9 @@ const Stores = () => {
             <div className="w-full h-full min-h-[400px] rounded-lg bg-gray-200 flex items-center justify-center">
               <div className="text-center p-6">
                 <MapPin className="h-12 w-12 mx-auto text-gray-400 mb-4" />
-                <h3 className="text-lg font-medium text-gray-700">Интерактивная карта</h3>
+                <h3 className="text-lg font-medium text-gray-700">Interactive Map</h3>
                 <p className="text-gray-500 mt-2">
-                  Здесь будет отображена карта с расположением магазинов
+                  A map showing store locations will be displayed here
                 </p>
               </div>
             </div>
@@ -185,7 +185,7 @@ const StoreCard = ({ store, isSelected, onSelect }: StoreCardProps) => {
         </div>
         
         <div className="mt-3">
-          <p className="text-xs text-gray-500 mb-2">Доступные товары:</p>
+          <p className="text-xs text-gray-500 mb-2">Available products:</p>
           <div className="flex flex-wrap gap-2">
             {store.products.map((product, index) => (
               <Badge key={index} variant="secondary">
@@ -198,7 +198,7 @@ const StoreCard = ({ store, isSelected, onSelect }: StoreCardProps) => {
         <div className="mt-4 flex justify-end">
           <Button variant="outline" size="sm" className="text-xs">
             <ExternalLink className="h-3 w-3 mr-1" />
-            Построить маршрут
+            Get Directions
           </Button>
         </div>
       </CardContent>
